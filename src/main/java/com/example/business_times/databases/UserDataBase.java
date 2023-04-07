@@ -11,5 +11,4 @@ import com.example.business_times.interfaces.UserDao;
 @Database(entities = {User.class},version = 1)
 public abstract class UserDataBase extends RoomDatabase {
     public abstract UserDao userDao();
-    private static UserDataBase userDataBase;
 }
