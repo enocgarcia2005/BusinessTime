@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Business_Times</string>
+    <string name="image_background">image background</string>
+    <string name="btn_login">Iniciar Sesión</string>
+    <string name="dont_have_account">¿No tienes cuenta?</string>
+    <string name="btn_register">Registrarse</string>
+    <string name="copyright">© Copyright 2023 Enoc</string>
+    <string name="slogan_part1">Registra</string>
+    <string name="slogan_part2">Gestiona</string>
+    <string name="slogan_part3">y</string>
+    <string name="slogan_part4">Gana</string>
+    <string name="slogan_part5">dinero</string>
+    <string name="slogan_part6">en tu negocio</string>
+    <string name="welcome">Bienvendo!</string>
+    <string name="hint_name">Nombres</string>
+    <string name="hint_last_name">Apellidos</string>
+    <string name="hint_username">Nombre de Usuario</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="create_account">Crea tu cuenta</string>
+
+
+</resources>
