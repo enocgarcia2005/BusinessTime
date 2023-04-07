@@ -25,9 +25,9 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         txtName=findViewById(R.id.txtName);
         txtLastName=findViewById(R.id.txtLastName);
-        txtUserName=findViewById(R.id.txtUserNameR);
-        txtPassword=findViewById(R.id.txtPaswordR);
-        Button btnRegister=findViewById(R.id.btnCreateAccount);
+        txtUserName=findViewById(R.id.txtUserNameL);
+        txtPassword=findViewById(R.id.txtPaswordL);
+        Button btnRegister=findViewById(R.id.btnToAcces);
 
         Users users =new Users();
 

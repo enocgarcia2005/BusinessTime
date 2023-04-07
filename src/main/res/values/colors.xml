@@ -12,4 +12,12 @@
     <color name="primary">#F7C42D</color>
     <color name="background">#F5F5F5</color>
     <color name="text">#000000</color>
+
+    <color name="selectIconColor">#04E1F8</color>
+    <color name="defaultIconColor">#F6F6F6</color>
+    <color name="counTextColor">#FFF</color>
+    <color name="countBackground">#F45E0B</color>
+    <color name="circleColor">#FFF</color>
+    <color name="backgroundBottomColor">#F7C42D</color>
+    <color name="shadowColor">#2E2E2E</color>
 </resources>
