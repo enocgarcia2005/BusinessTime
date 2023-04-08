@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.business_times.R;
+import com.example.business_times.config.Navigation;
 import com.example.business_times.controllers.Users;
 import com.example.business_times.entities.User;
 
@@ -15,6 +16,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText txtUserName;
     EditText txtPassword;
     User user=new User();
+    Navigation navigation=new Navigation();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
             if (textsEmptys()){
                 Toast.makeText(LoginActivity.this, "Rellene todos los campos", Toast.LENGTH_SHORT).show();
             }else{
-                users.validate(create(),getApplicationContext());
+                answer(users.validate(create(),getApplicationContext()));
             }
         });
 
@@ -45,4 +47,12 @@ public class LoginActivity extends AppCompatActivity {
         user.setPassword(txtPassword.getText().toString());
         return user;
     }
+    public void answer(String answer){
+        if(answer.equalsIgnoreCase("bienvenido")){
+            startActivity(navigation.createIntent(getApplicationContext(),HomeActivity.class));
+        }else{
+            Toast.makeText(this, answer, Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

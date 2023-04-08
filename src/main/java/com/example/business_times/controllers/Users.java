@@ -14,6 +14,8 @@ import java.util.List;
 public class Users {
     private List<User> userList;
     private UserDataBase userDataBase;
+
+
     public void save(User user, Context context){
         userDataBase=getConnection(context);
         userList=userDataBase.userDao().getAll();
@@ -24,13 +26,13 @@ public class Users {
                 Toast.makeText(context, "El usuario ya existe", Toast.LENGTH_SHORT).show();
             }
         }
-    public void validate(User user,Context context){
+    public String validate(User user,Context context){
        userDataBase=getConnection(context);
        userList=userDataBase.userDao().getAll();
         if (!userExist(user,userList)) {
-            Toast.makeText(context, "EL usuario no existe", Toast.LENGTH_SHORT).show();
+            return "EL usuario no existe";
         }else {
-            toAccess(user,userList,context);
+           return toAccess(user,userList);
         }
     }
     private UserDataBase getConnection(Context context){
@@ -38,19 +40,17 @@ public class Users {
                 allowMainThreadQueries().build();
     }
     private boolean userExist(User user,List<User> userList){
-        boolean userExist=false;
         if(userList!=null){
             for (User users:userList) {
-                userExist=users.getUserName().equalsIgnoreCase(user.getUserName());
-                if(userExist){
-                    break;
+                if(users.getUserName().equalsIgnoreCase(user.getUserName())){
+                    return true;
                 }
             }
         }
-        return userExist;
+        return false;
     }
 
-    private void toAccess(User user,List<User> userList,Context context){
+    private String toAccess(User user,List<User> userList){
         boolean userName=false;
         boolean password=false;
         for (User users:userList){
@@ -59,9 +59,8 @@ public class Users {
         }
         boolean log= userName&&password;
         if (log){
-            Toast.makeText(context, "Bienvenido", Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(context, "El usuario y/o contraseña no coinciden", Toast.LENGTH_SHORT).show();
+          return "bienvenido";
         }
+        return "Contraseña y/o no coinciden";
     }
 }
