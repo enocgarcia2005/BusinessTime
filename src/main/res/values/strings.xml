@@ -17,8 +17,12 @@
     <string name="hint_username">Nombre de Usuario</string>
     <string name="hint_password">Contraseña</string>
     <string name="create_account">Crea tu cuenta</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tittle_earnings">Por cobrar</string>
+    <string name="default_money">0 $</string>
+    <string name="default_clients">0 Clientes</string>
+    <string name="tittle_expenses">Por pagar</string>
+    <string name="default_providers">0 Proveedores</string>
 
 
 </resources>

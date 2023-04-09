@@ -23,6 +23,7 @@ public class HomeActivity extends AppCompatActivity {
         meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_EARNINGS,R.drawable.baseline_attach_money_24));
         meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_EXPENSES,R.drawable.baseline_money_off_24));
         meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_ACCOUNT,R.drawable.baseline_manage_accounts_24));
+        meowBottomNavigation.setOnClickMenuListener(item -> {});
         meowBottomNavigation.setOnShowListener(
                 item -> {
                     switch (item.getId()){
@@ -39,6 +40,7 @@ public class HomeActivity extends AppCompatActivity {
                     loadFragment(fragmentA);
                 });
         meowBottomNavigation.setOnReselectListener(item -> {});
+
         meowBottomNavigation.setCount(ID_EXPENSES,"10");
         meowBottomNavigation.show(ID_EARNINGS,true);
     }

@@ -20,4 +20,5 @@
     <color name="circleColor">#66873F</color>
     <color name="backgroundBottomColor">#F7C42D</color>
     <color name="shadowColor">#2E2E2E</color>
+    <color name="red">#F23A30</color>
 </resources>
