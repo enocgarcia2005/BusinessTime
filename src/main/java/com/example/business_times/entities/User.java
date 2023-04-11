@@ -1,5 +1,6 @@
 package com.example.business_times.entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -8,15 +9,16 @@ import androidx.room.PrimaryKey;
  * the class User is a entity that contain attributes for the users with their getters and setters
  */
 
-@Entity(tableName = User.TABLE_NAME)
+@Entity(tableName = User.TABLE_USERS)
 public class User {
     /**
      * Name of the table
      */
-    public static final String TABLE_NAME="users";
+    public static final String TABLE_USERS="users";
 
     @PrimaryKey
     @ColumnInfo(name = "userName")
+    @NonNull
     private String userName;
     @ColumnInfo(name = "name")
     private String name;
@@ -26,7 +28,8 @@ public class User {
     @ColumnInfo(name = "password")
     private String password;
 
-    public User(){}
+    public User(){
+    }
 
 
     public String getName() {
@@ -45,11 +48,11 @@ public class User {
         this.lastName = lastName;
     }
 
+    @NonNull
     public String getUserName() {
         return userName;
     }
-
-    public void setUserName(String userName) {
+    public void setUserName(@NonNull String userName) {
         this.userName = userName;
     }
 

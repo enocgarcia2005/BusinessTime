@@ -32,7 +32,7 @@ public class Users {
     public void save(User user, Context context){
         userDataBase=getConnection(context);
         userList=userDataBase.userDao().getAll();
-            if (userExistent(user, userList)) {
+            if (!userExistent(user, userList)) {
                 userDataBase.userDao().insert(user);
                 Toast.makeText(context, "Cuenta creada correctamente", Toast.LENGTH_SHORT).show();
             }else {
@@ -77,7 +77,7 @@ public class Users {
     private boolean userExistent(User user, List<User> userList){
         if(userList!=null){
             for (User users:userList) {
-                if(user.getUserName().equalsIgnoreCase(users.getUserName())){
+                if(users.getUserName().equalsIgnoreCase(user.getUserName())){
                     return true;
                 }
             }
@@ -99,7 +99,7 @@ public class Users {
             userName= users.getUserName().equalsIgnoreCase(user.getUserName());
             password=users.getPassword().equals(user.getPassword());
         }
-        boolean log= userName&&password;
+        boolean log=userName&&password;
         if (log){
           return "bienvenido";
         }

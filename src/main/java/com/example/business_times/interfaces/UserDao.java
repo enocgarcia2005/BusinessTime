@@ -26,7 +26,7 @@ public interface UserDao {
      * list all users of data base .
      * @return  return arrayList with all users.
      */
-    @Query("SELECT * FROM "+User.TABLE_NAME)
+    @Query("SELECT * FROM "+User.TABLE_USERS)
     List<User> getAll();
 
 }

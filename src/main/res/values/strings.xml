@@ -23,6 +23,12 @@
     <string name="default_clients">0 Clientes</string>
     <string name="tittle_expenses">Por pagar</string>
     <string name="default_providers">0 Proveedores</string>
-
-
+    <string name="hint_search">Buscar elemento</string>
+    <string name="zero">0</string>
+    <string name="name">nombre</string>
+    <string name="new_earning">Nueva venta</string>
+    <string name="new_expense">Nuevo gasto</string>
+    <string name="clients">Clientes</string>
+    <string name="providers">Proveedores</string>
+    <string name="settings_account">Ajustes de la cuenta</string>
 </resources>

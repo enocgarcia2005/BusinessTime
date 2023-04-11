@@ -3,6 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".views.EarningsFragment"
-    android:background="@color/background"/>
+    android:layout_height="490dp"
+    android:background="@color/background"
+    tools:context=".views.EarningsFragment">
+
+    <EditText
+        android:id="@+id/txtSearch"
+        android:layout_width="340dp"
+        android:layout_height="45dp"
+        android:background="@drawable/card_view"
+        android:hint="@string/hint_search"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:paddingStart="15dp"
+        android:paddingTop="3dp"
+        android:textAlignment="viewStart"
+        android:textColor="@color/text"
+        android:textColorHint="@color/text"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlSymmetry" />
+
+    <ImageView
+        android:id="@+id/imgSearchIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:contentDescription="@string/image_background"
+        android:src="@android:drawable/ic_menu_search"
+        app:layout_constraintBottom_toBottomOf="@+id/txtSearch"
+        app:layout_constraintEnd_toEndOf="@+id/txtSearch"
+        app:layout_constraintTop_toTopOf="@+id/txtSearch" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rwEarnigs"
+        android:layout_width="409dp"
+        android:layout_height="330dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtSearch"
+        android:background="@color/background"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAdd"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="31dp"
+        android:background="@drawable/button_green"
+        android:fontFamily="@font/acme"
+        android:text="@string/new_earning"
+        android:textColor="@color/background"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
