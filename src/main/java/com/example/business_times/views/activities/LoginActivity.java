@@ -2,6 +2,8 @@ package com.example.business_times.views.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -87,6 +89,10 @@ public class LoginActivity extends AppCompatActivity {
 
             String answer=users.validate(user,getApplicationContext());
                 if ("bienvenido".equals(answer)) {
+                    SharedPreferences preferences=getSharedPreferences("User", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("nameUser", user.getUserName());
+                    editor.apply();
                     startActivity(navigation.createIntent(getApplicationContext(), HomeActivity.class));
                 } else {
                     Toast.makeText(this, answer, Toast.LENGTH_SHORT).show();
@@ -101,4 +107,5 @@ public class LoginActivity extends AppCompatActivity {
      */
     @Override
     public void onBackPressed() {}
+
 }

@@ -3,7 +3,10 @@ package com.example.business_times.views.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.business_times.R;
@@ -86,4 +89,12 @@ public class HomeActivity extends AppCompatActivity {
      */
     @Override
     public void onBackPressed() {}
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SharedPreferences prefs = getSharedPreferences("User", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.clear();
+        editor.apply();
+    }
 }

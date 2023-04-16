@@ -1,6 +1,7 @@
 package com.example.business_times.controllers;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import androidx.room.Room;
@@ -98,7 +99,8 @@ public class Users {
             userName= users.getUserName().equalsIgnoreCase(user.getUserName());
             password=users.getPassword().equals(user.getPassword());
 
-            if(userName&&password){return "bienvenido";}
+            if(userName&&password){
+                return "bienvenido";}
         }
 
         return "Contraseña y/o no coinciden";

@@ -32,6 +32,6 @@ public interface AdminDao {
     @Query("SELECT * FROM "+User.TABLE_USERS)
     List<User> getAll();
 
-    @Query("SELECT * FROM "+ Client.TABLE_CLIENTS)
-    List<Client> getAllCLients();
+    @Query("SELECT * FROM "+ Client.TABLE_CLIENTS +" WHERE user= :userName")
+    List<Client> getAllCLients(String userName);
 }

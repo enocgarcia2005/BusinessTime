@@ -14,21 +14,20 @@ import java.util.List;
 public class Clients {
     List<Client> clientList;
     AdminDataBase adminDataBase;
-    public void save(Client client,Context context){
+    public void save(Client client,Context context,String userName){
         adminDataBase =getConecction(context);
-        clientList= getClientList(context);
+        clientList= getClientList(context,userName);
         if(!clientExist(client,clientList)){
             adminDataBase.userDao().insert(client);
-            Toast.makeText(context, "Cuenta creada correctamente", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(context, "El cliente ya ha sido agregado", Toast.LENGTH_SHORT).show();
         }
     
     }
 
-    public List<Client> getClientList(Context context){
+    public List<Client> getClientList(Context context,String userName){
         AdminDataBase adminDataBase=getConecction(context);
-        return adminDataBase.userDao().getAllCLients();
+        return adminDataBase.userDao().getAllCLients(userName);
     }
     private boolean clientExist(Client client,List<Client> clientList){
         if (clientList!=null){

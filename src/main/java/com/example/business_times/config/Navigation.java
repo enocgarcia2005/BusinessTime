@@ -14,5 +14,6 @@ public class Navigation {
      * @return return the Intent created with the parameters previous.
      */
     public Intent createIntent(Context context,Class<?> clas){return new Intent(context,clas);}
+
 }
 

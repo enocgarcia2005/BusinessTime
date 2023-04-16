@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,7 +33,10 @@ public class ClientsActivity extends AppCompatActivity {
         btnAdd=findViewById(R.id.btnAddClient);
         rwClients=findViewById(R.id.rwClients);
         lblTotalClients=findViewById(R.id.numberClients);
-        updateRecyclerView();
+        SharedPreferences preferences=getSharedPreferences("User",Context.MODE_PRIVATE);
+        String nameUser=preferences.getString("nameUser","");
+
+        updateRecyclerView(nameUser);
 
         btnAdd.setOnClickListener(v->{
             final Dialog dialog=new Dialog(ClientsActivity.this);
@@ -46,10 +51,10 @@ public class ClientsActivity extends AppCompatActivity {
                 EditText txtLastNameClient=dialog.findViewById(R.id.txtLastNameClientAdd);
                 client.setName(txtNameClient.getText().toString());
                 client.setLastName(txtLastNameClient.getText().toString());
-                client.setUser("g");
+                client.setUser(nameUser);
 
-                clients.save(client,getApplicationContext());
-                updateRecyclerView();
+                clients.save(client,getApplicationContext(),nameUser);
+                updateRecyclerView(nameUser);
                 dialog.cancel();
             });
             btnCancel.setOnClickListener(v2->dialog.cancel());
@@ -57,9 +62,17 @@ public class ClientsActivity extends AppCompatActivity {
         });
 
     }
-    public void updateRecyclerView(){
+    public void updateRecyclerView(String userName){
         rwClients.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        ClientsAdapter clientsAdapter =new ClientsAdapter(getApplicationContext(),clients.getClientList(getApplicationContext()));
+        ClientsAdapter clientsAdapter =new ClientsAdapter(getApplicationContext(),clients.getClientList(getApplicationContext(),userName));
         rwClients.setAdapter(clientsAdapter);
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SharedPreferences prefs = getSharedPreferences("User", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.clear();
+        editor.apply();
     }
 }
