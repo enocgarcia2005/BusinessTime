@@ -16,13 +16,22 @@ public class Vent {
     private long id;
     @ColumnInfo(name = "name")
     private String name;
+
+    @ColumnInfo(name = "date")
+    private  String date;
     @ColumnInfo(name = "details")
     private String details;
-    @ColumnInfo(name = "price")
+   @ColumnInfo(name = "price")
     private double price;
     @ColumnInfo(name = "nameClient")
     private String nameClient;
+    public String getDate() {
+        return date;
+    }
 
+    public void setDate(String date) {
+        this.date = date;
+    }
     public double getPrice() {
         return price;
     }

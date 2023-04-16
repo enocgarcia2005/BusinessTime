@@ -12,11 +12,11 @@ public class Client {
     public static  final String COLUMN_ID_CLIENT= BaseColumns._ID;
     public Client(){}
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(index = true,name = COLUMN_ID_CLIENT)
+   @ColumnInfo(index = true,name = COLUMN_ID_CLIENT)
     private long id;
-    @ColumnInfo(name = "name")
+   @ColumnInfo(name = "name")
     private String name;
-    @ColumnInfo(name = "lastName")
+   @ColumnInfo(name = "lastName")
     private String lastName;
 
     @ColumnInfo(name = "user")

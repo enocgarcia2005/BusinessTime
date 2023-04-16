@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".views.HomeActivity">
+    tools:context=".views.activities.HomeActivity">
 
     <TextView
-        android:id="@+id/headerBackground"
+        android:id="@+id/headerHome"
         android:layout_width="600dp"
         android:layout_height="400dp"
         android:layout_marginTop="-100dp"
@@ -26,7 +26,7 @@
         android:background="@color/background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerBackground" />
+        app:layout_constraintTop_toBottomOf="@+id/headerHome" />
 
     <com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:id="@+id/bottomNavigation"
@@ -45,7 +45,7 @@
         app:mbn_shadowColor="@color/shadowColor" />
 
     <TextView
-        android:id="@+id/cardViewEarnigs"
+        android:id="@+id/containerEarnigsInfo"
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_marginStart="32dp"
@@ -55,7 +55,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/cardViewExpenses"
+        android:id="@+id/containerExpensesInfo"
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_marginTop="72dp"
@@ -65,7 +65,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tittleEarnigs"
+        android:id="@+id/tittleEarnigsInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -73,13 +73,13 @@
         android:text="@string/tittle_earnings"
         android:textColor="@color/circleColor"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/cardViewEarnigs"
-        app:layout_constraintStart_toStartOf="@+id/cardViewEarnigs"
-        app:layout_constraintTop_toTopOf="@+id/cardViewEarnigs"
+        app:layout_constraintEnd_toEndOf="@+id/containerEarnigsInfo"
+        app:layout_constraintStart_toStartOf="@+id/containerEarnigsInfo"
+        app:layout_constraintTop_toTopOf="@+id/containerEarnigsInfo"
         tools:ignore="TextContrastCheck" />
 
     <TextView
-        android:id="@+id/tittleExpenses"
+        android:id="@+id/tittleExpensesInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -87,13 +87,13 @@
         android:text="@string/tittle_expenses"
         android:textColor="@color/red"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/cardViewExpenses"
-        app:layout_constraintStart_toStartOf="@+id/cardViewExpenses"
-        app:layout_constraintTop_toTopOf="@+id/cardViewExpenses"
+        app:layout_constraintEnd_toEndOf="@+id/containerExpensesInfo"
+        app:layout_constraintStart_toStartOf="@+id/containerExpensesInfo"
+        app:layout_constraintTop_toTopOf="@+id/containerExpensesInfo"
         tools:ignore="TextContrastCheck" />
 
     <TextView
-        android:id="@+id/lblMoneyEarnings"
+        android:id="@+id/lblMoneyEarning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -101,14 +101,14 @@
         android:text="@string/default_money"
         android:textColor="@color/circleColor"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/cardViewEarnigs"
+        app:layout_constraintEnd_toEndOf="@+id/containerEarnigsInfo"
         app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="@+id/cardViewEarnigs"
-        app:layout_constraintTop_toBottomOf="@+id/tittleEarnigs"
+        app:layout_constraintStart_toStartOf="@+id/containerEarnigsInfo"
+        app:layout_constraintTop_toBottomOf="@+id/tittleEarnigsInfo"
         tools:ignore="TextContrastCheck" />
 
     <TextView
-        android:id="@+id/lblMoneyExpenses"
+        android:id="@+id/lblMoneyExpense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -116,13 +116,13 @@
         android:text="@string/default_money"
         android:textColor="@color/red"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/cardViewExpenses"
-        app:layout_constraintStart_toStartOf="@+id/cardViewExpenses"
-        app:layout_constraintTop_toBottomOf="@+id/tittleExpenses"
+        app:layout_constraintEnd_toEndOf="@+id/containerExpensesInfo"
+        app:layout_constraintStart_toStartOf="@+id/containerExpensesInfo"
+        app:layout_constraintTop_toBottomOf="@+id/tittleExpensesInfo"
         tools:ignore="TextContrastCheck" />
 
     <TextView
-        android:id="@+id/lblProviders"
+        android:id="@+id/lblNumberProviders"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -130,13 +130,13 @@
         android:text="@string/default_providers"
         android:textColor="@color/red"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/cardViewExpenses"
-        app:layout_constraintStart_toStartOf="@+id/cardViewExpenses"
-        app:layout_constraintTop_toBottomOf="@+id/lblMoneyExpenses"
+        app:layout_constraintEnd_toEndOf="@+id/containerExpensesInfo"
+        app:layout_constraintStart_toStartOf="@+id/containerExpensesInfo"
+        app:layout_constraintTop_toBottomOf="@+id/lblMoneyExpense"
         tools:ignore="TextContrastCheck" />
 
     <TextView
-        android:id="@+id/lblClients"
+        android:id="@+id/lblNumberClients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -144,10 +144,10 @@
         android:text="@string/default_clients"
         android:textColor="@color/circleColor"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/cardViewEarnigs"
+        app:layout_constraintEnd_toEndOf="@+id/containerEarnigsInfo"
         app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="@+id/cardViewEarnigs"
-        app:layout_constraintTop_toBottomOf="@+id/lblMoneyEarnings"
+        app:layout_constraintStart_toStartOf="@+id/containerEarnigsInfo"
+        app:layout_constraintTop_toBottomOf="@+id/lblMoneyEarning"
         tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

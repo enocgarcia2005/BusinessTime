@@ -6,7 +6,7 @@ import android.widget.Toast;
 import androidx.room.Room;
 
 import com.example.business_times.config.Constant;
-import com.example.business_times.databases.UserDataBase;
+import com.example.business_times.databases.AdminDataBase;
 import com.example.business_times.entities.User;
 
 import java.util.List;
@@ -20,9 +20,9 @@ public class Users {
      */
     private List<User> userList;
     /**
-     * userDataBase communicate the information of the application with the data base.
+     * adminDataBase communicate the information of the application with the data base.
      */
-    private UserDataBase userDataBase;
+    private AdminDataBase adminDataBase;
 
     /**
      * this method save a user that not exist in the data base.
@@ -30,10 +30,10 @@ public class Users {
      * @param context-context of the activity.
      */
     public void save(User user, Context context){
-        userDataBase=getConnection(context);
-        userList=userDataBase.userDao().getAll();
+        adminDataBase =getConnection(context);
+        userList= adminDataBase.userDao().getAll();
             if (!userExistent(user, userList)) {
-                userDataBase.userDao().insert(user);
+                adminDataBase.userDao().insert(user);
                 Toast.makeText(context, "Cuenta creada correctamente", Toast.LENGTH_SHORT).show();
             }else {
                 Toast.makeText(context, "El usuario ya existe", Toast.LENGTH_SHORT).show();
@@ -49,22 +49,21 @@ public class Users {
      * else return "Contraseña y/o no coinciden".
      */
     public String validate(User user,Context context){
-       userDataBase=getConnection(context);
-       userList=userDataBase.userDao().getAll();
-        if (!userExistent(user, userList)) {
-            return "EL usuario no existe";
-        }else {
-           return toAccess(user,userList);
+       adminDataBase =getConnection(context);
+       userList= adminDataBase.userDao().getAll();
+        if (userExistent(user, userList)) {
+            return logIn(user,userList);
         }
+        return "EL usuario no existe";
     }
 
     /**
      * This method create the object with the connection with the data base.
      * @param context-context of the activity.
-     * @return return the object of type UserDataBase.
+     * @return return the object of type AdminDataBase.
      */
-    private UserDataBase getConnection(Context context){
-        return Room.databaseBuilder(context,UserDataBase.class, Constant.BD_NAME).
+    private AdminDataBase getConnection(Context context){
+        return Room.databaseBuilder(context, AdminDataBase.class, Constant.BD_NAME).
                 allowMainThreadQueries().build();
     }
 
@@ -92,17 +91,16 @@ public class Users {
      * @return if the user exist return "El usuario no existe,
      * else return "Contraseña y/o no coinciden".
      */
-    private String toAccess(User user,List<User> userList){
-        boolean userName=false;
-        boolean password=false;
+    private String logIn(User user,List<User> userList){
+        boolean userName,password;
+
         for (User users:userList){
             userName= users.getUserName().equalsIgnoreCase(user.getUserName());
             password=users.getPassword().equals(user.getPassword());
+
+            if(userName&&password){return "bienvenido";}
         }
-        boolean log=userName&&password;
-        if (log){
-          return "bienvenido";
-        }
+
         return "Contraseña y/o no coinciden";
     }
 }

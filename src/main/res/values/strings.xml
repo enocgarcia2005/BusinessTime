@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Business_Times</string>
+    <string name="app_name">Business Times</string>
     <string name="image_background">image background</string>
     <string name="btn_login">Iniciar Sesión</string>
     <string name="dont_have_account">¿No tienes cuenta?</string>
@@ -31,4 +31,15 @@
     <string name="clients">Clientes</string>
     <string name="providers">Proveedores</string>
     <string name="settings_account">Ajustes de la cuenta</string>
+    <string name="hint_price">Introduzca el precio</string>
+    <string name="hint_details">Introduzca detalles de venta</string>
+    <string name="note">Nota: los campos con * son obligatorios</string>
+    <string name="text_required">*</string>
+    <string name="selec_client">Seleccione un cliente</string>
+    <string name="add">agregar</string>
+    <string name="total_clients">Total de clientes</string>
+    <string name="add_client">Crear cliente</string>
+    <string name="name_client">Introduzca el nombre</string>
+    <string name="lastname_client">Introduzca el apellido</string>
+    <string name="cancel">Cancelar</string>
 </resources>

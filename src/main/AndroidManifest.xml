@@ -12,16 +12,25 @@
         android:theme="@style/Theme.Business_Times"
         tools:targetApi="31">
         <activity
-            android:name=".views.HomeActivity"
+            android:name=".views.activities.ClientsActivity"
             android:exported="false" />
         <activity
-            android:name=".views.RegisterActivity"
+            android:name=".views.activities.NewExpense"
             android:exported="false" />
         <activity
-            android:name=".views.LoginActivity"
+            android:name=".views.activities.NewVentsActivity"
             android:exported="false" />
         <activity
-            android:name=".views.MainActivity"
+            android:name=".views.activities.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

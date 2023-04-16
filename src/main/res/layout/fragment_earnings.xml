@@ -2,10 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_earnings"
     android:layout_width="match_parent"
     android:layout_height="490dp"
     android:background="@color/background"
-    tools:context=".views.EarningsFragment">
+    tools:context=".views.fragments.EarningsFragment">
 
     <EditText
         android:id="@+id/txtSearch"

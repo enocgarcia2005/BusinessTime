@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.LoginActivity"
+    tools:context=".views.activities.LoginActivity"
     android:background="@color/background">
 
     <TextView
-        android:id="@+id/lblCopyright2"
+        android:id="@+id/copyright"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -21,7 +21,7 @@
         tools:ignore="VisualLintOverlap" />
 
     <TextView
-        android:id="@+id/headerBackGround"
+        android:id="@+id/header"
         android:layout_width="500dp"
         android:layout_height="450dp"
         android:layout_marginStart="131dp"
@@ -35,33 +35,32 @@
         tools:ignore="VisualLintBounds" />
 
     <TextView
-        android:id="@+id/cardView"
+        android:id="@+id/container"
         android:layout_width="350dp"
-        android:layout_height="750dp"
+        android:layout_height="650dp"
+        android:layout_marginBottom="70dp"
         android:background="@drawable/card_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/lblCreateAccount"
+        android:id="@+id/lblWelcomeLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/black_han_sans"
         android:text="@string/welcome"
         android:textColor="@color/primary"
         android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="@+id/cardView"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="@+id/cardView"
-        app:layout_constraintTop_toTopOf="@+id/headerBackGround"
+        app:layout_constraintEnd_toEndOf="@+id/container"
+        app:layout_constraintStart_toStartOf="@+id/container"
+        app:layout_constraintTop_toTopOf="@+id/container"
         tools:ignore="TextContrastCheck" />
 
     <EditText
-        android:id="@+id/txtUserNameL"
+        android:id="@+id/txtUserName"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="84dp"
@@ -75,13 +74,13 @@
         android:textColor="@color/text"
         android:textColorHint="@color/hint"
         android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="@+id/container"
         app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/lblCreateAccount" />
+        app:layout_constraintStart_toStartOf="@+id/container"
+        app:layout_constraintTop_toBottomOf="@+id/lblWelcomeLogin" />
 
     <EditText
-        android:id="@+id/txtPaswordL"
+        android:id="@+id/txtPasword"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="30dp"
@@ -90,18 +89,18 @@
         android:fontFamily="@font/acme"
         android:hint="@string/hint_password"
         android:importantForAutofill="no"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textAlignment="center"
         android:textColor="@color/text"
         android:textColorHint="@color/hint"
         android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="@+id/container"
         app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/txtUserNameL" />
+        app:layout_constraintStart_toStartOf="@+id/container"
+        app:layout_constraintTop_toBottomOf="@+id/txtUserName" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnToAcces"
+        android:id="@+id/btnGoToHome"
         android:layout_width="255dp"
         android:layout_height="55dp"
         android:layout_marginBottom="30dp"
@@ -109,9 +108,22 @@
         android:fontFamily="@font/delius_unicase"
         android:text="@string/btn_login"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView"
-        app:layout_constraintEnd_toEndOf="@+id/cardView"
-        app:layout_constraintStart_toStartOf="@+id/cardView"
+        app:layout_constraintBottom_toBottomOf="@+id/container"
+        app:layout_constraintEnd_toEndOf="@+id/container"
+        app:layout_constraintStart_toStartOf="@+id/container"
         tools:ignore="TextContrastCheck" />
+
+    <ImageView
+        android:id="@+id/btnBackToWelcomeActivity"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/button_white"
+        android:contentDescription="@string/image_background"
+        android:src="@drawable/baseline_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
