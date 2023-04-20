@@ -8,6 +8,7 @@ import androidx.room.Query;
 
 import com.example.business_times.entities.Client;
 import com.example.business_times.entities.User;
+import com.example.business_times.entities.Vent;
 
 import java.util.List;
 /**
@@ -21,9 +22,11 @@ public interface AdminDao {
      * @return return 1 if is all ok.
      */
     @Insert
-    long insert(User user);
+    void insert(User user);
     @Insert
-    long insert(Client client);
+    void insert(Client client);
+    @Insert
+    void insert(Vent vent);
 
     /**
      * list all users of data base .
@@ -34,4 +37,7 @@ public interface AdminDao {
 
     @Query("SELECT * FROM "+ Client.TABLE_CLIENTS +" WHERE user= :userName")
     List<Client> getAllCLients(String userName);
+
+    @Query("SELECT * FROM "+Vent.TABLE_PRODUCTS+" WHERE nameUser= :userName")
+    List<Vent> getAllVents(String userName);
 }

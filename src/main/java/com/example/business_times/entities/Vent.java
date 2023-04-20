@@ -14,9 +14,6 @@ public class Vent {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(index = true,name = COLUMN_ID_VENT)
     private long id;
-    @ColumnInfo(name = "name")
-    private String name;
-
     @ColumnInfo(name = "date")
     private  String date;
     @ColumnInfo(name = "details")
@@ -25,6 +22,17 @@ public class Vent {
     private double price;
     @ColumnInfo(name = "nameClient")
     private String nameClient;
+    @ColumnInfo
+    private String nameUser;
+
+    public String getNameUser() {
+        return nameUser;
+    }
+
+    public void setNameUser(String nameUser) {
+        this.nameUser = nameUser;
+    }
+
     public String getDate() {
         return date;
     }
@@ -47,15 +55,6 @@ public class Vent {
     public void setId(long id) {
         this.id = id;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getDetails() {
         return details;
     }

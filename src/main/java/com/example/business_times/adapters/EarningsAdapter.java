@@ -9,20 +9,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.business_times.R;
-import com.example.business_times.entities.Client;
 import com.example.business_times.entities.Vent;
 import com.example.business_times.holders.EarningsHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EarningsAdapter extends RecyclerView.Adapter<EarningsHolder> {
     Context context;
-    List<Client> dataClients;
-    List<Vent> dataVents;
-    public EarningsAdapter(Context context, List<Client> dataClients, List<Vent> dataVents){
+    List<Vent> ventList;
+    List<String> earnings;
+
+    public EarningsAdapter(Context context, List<Vent> ventList){
         this.context=context;
-        this.dataClients=dataClients;
-        this.dataVents=dataVents;
+        this.ventList=ventList;
+        earnings=nameClients();
+
     }
 
     @NonNull
@@ -34,18 +36,33 @@ public class EarningsAdapter extends RecyclerView.Adapter<EarningsHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final EarningsHolder holder, final int position) {
-        String name=dataClients.get(position).getName()+" "+dataClients.get(position).getLastName();
-        String money= dataVents.get(position).getPrice()+"$";
+        String name=earnings.get(position);
+        double money=0;
+        for (Vent vent:ventList){
+            if(earnings.get(position).equals(vent.getNameClient())){
+                money+=vent.getPrice();
+            }
+        }
+        String totalMoney= money+"$";
         holder.namePerson.setText(name);
-        holder.money.setText(money);
-        holder.date.setText(dataVents.get(position).getDate());
+        holder.money.setText(totalMoney);
     }
 
     @Override
     public int getItemCount() {
-        if(dataClients==null){
+        if(earnings==null){
             return 0;
         }
-        return dataClients.size();
+        return earnings.size();
+    }
+    public List<String> nameClients(){
+        List<String> earningsList=new ArrayList<>();
+
+        for (Vent vent:ventList) {
+            if(!earningsList.contains(vent.getNameClient())){
+                earningsList.add(vent.getNameClient());
+            }
+        }
+        return earningsList;
     }
 }

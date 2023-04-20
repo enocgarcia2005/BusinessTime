@@ -10,20 +10,24 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.business_times.R;
 import com.example.business_times.adapters.ClientsAdapter;
+import com.example.business_times.config.Navigation;
 import com.example.business_times.controllers.Clients;
 import com.example.business_times.entities.Client;
 
 
 public class ClientsActivity extends AppCompatActivity {
     Button btnAdd;
+    ImageView btnBack;
     Clients clients=new Clients();
     Client client=new Client();
     RecyclerView rwClients;
     TextView lblTotalClients;
+    Navigation navigation=new Navigation();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,7 @@ public class ClientsActivity extends AppCompatActivity {
         btnAdd=findViewById(R.id.btnAddClient);
         rwClients=findViewById(R.id.rwClients);
         lblTotalClients=findViewById(R.id.numberClients);
+        btnBack=findViewById(R.id.btnBackH);
         SharedPreferences preferences=getSharedPreferences("User",Context.MODE_PRIVATE);
         String nameUser=preferences.getString("nameUser","");
 
@@ -60,19 +65,12 @@ public class ClientsActivity extends AppCompatActivity {
             btnCancel.setOnClickListener(v2->dialog.cancel());
             dialog.show();
         });
-
+        btnBack.setOnClickListener(v -> startActivity(navigation.createIntent(getApplicationContext(), HomeActivity.class)));
     }
     public void updateRecyclerView(String userName){
         rwClients.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         ClientsAdapter clientsAdapter =new ClientsAdapter(getApplicationContext(),clients.getClientList(getApplicationContext(),userName));
         rwClients.setAdapter(clientsAdapter);
     }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        SharedPreferences prefs = getSharedPreferences("User", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.clear();
-        editor.apply();
-    }
+
 }

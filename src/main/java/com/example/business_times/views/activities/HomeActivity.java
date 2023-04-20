@@ -10,9 +10,15 @@ import android.widget.TextView;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.business_times.R;
+import com.example.business_times.config.SharedPreferencesHelper;
+import com.example.business_times.controllers.Vents;
+import com.example.business_times.entities.Vent;
 import com.example.business_times.views.fragments.ConfigFragment;
 import com.example.business_times.views.fragments.EarningsFragment;
 import com.example.business_times.views.fragments.ExpensesFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
     /**
@@ -27,6 +33,11 @@ public class HomeActivity extends AppCompatActivity {
      * The variable "ID_ACCOUNT" has the number of position the button in the groups of buttons tab navigation.
      */
     private final int ID_ACCOUNT=3;
+    TextView lblMoney;
+    TextView lblClients;
+    Vents vents=new Vents();
+    List<String> clientList=new ArrayList<>();
+    List<Vent> ventList;
     /**
      * This object is created to save the fragment depending the button clicked in the button tab navigator.
      */
@@ -45,7 +56,25 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        SharedPreferencesHelper sharedPreferencesHelper=new SharedPreferencesHelper(getApplicationContext());
         MeowBottomNavigation meowBottomNavigation=findViewById(R.id.bottomNavigation);
+        lblMoney=findViewById(R.id.lblMoneyEarning);
+        lblClients=findViewById(R.id.lblNumberClients);
+
+        ventList=vents.getVentList(getApplicationContext(),sharedPreferencesHelper.getPreferences("nameUser"));
+
+        double money=0;
+        for (Vent vent:ventList){
+            money+= vent.getPrice();
+            if(!clientList.contains(vent.getNameClient())){
+                clientList.add(vent.getNameClient());
+            }
+        }
+        String totalMoney=money+"$";
+        String totalClient=clientList.size()+" Clientes";
+
+        lblMoney.setText(totalMoney);
+        lblClients.setText(totalClient);
 
         meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_EARNINGS,R.drawable.baseline_attach_money_24));
         meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_EXPENSES,R.drawable.baseline_money_off_24));

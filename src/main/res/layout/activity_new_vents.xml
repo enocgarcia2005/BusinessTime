@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imgBackground" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/txtDetails"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -76,15 +76,17 @@
         android:importantForAutofill="no" />
 
     <Spinner
-        android:id="@+id/spProviders"
+        android:id="@+id/spClients"
         android:layout_width="250dp"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/cardview_earnings"
+        android:dropDownWidth="wrap_content"
         android:spinnerMode="dropdown"
+        android:textAlignment="gravity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/txtDetails" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNew"

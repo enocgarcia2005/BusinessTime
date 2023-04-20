@@ -14,11 +14,11 @@ import android.widget.Button;
 import com.example.business_times.R;
 import com.example.business_times.adapters.EarningsAdapter;
 import com.example.business_times.config.Navigation;
-import com.example.business_times.entities.Client;
+import com.example.business_times.config.SharedPreferencesHelper;
+import com.example.business_times.controllers.Vents;
 import com.example.business_times.entities.Vent;
 import com.example.business_times.views.activities.NewVentsActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,14 +27,11 @@ public class EarningsFragment extends Fragment {
      * The object "btnAdd" has the task of save the events of the button add new vent.
      */
     Button btnAdd;
-    /**
-     * this list has all clients of the data base.
-     */
-    List<Client> clients;
+
     /**
      * this list has all vents of the data base.
      */
-    List<Vent> vents;
+    List<Vent> ventList;
     /**
      * The object of contains all vents and show in this fragment.
      */
@@ -43,6 +40,7 @@ public class EarningsFragment extends Fragment {
      * The object "navigation" has the unique function of create a Intent Object to navigate between activities.
      */
     Navigation navigation=new Navigation();
+    Vents vents=new Vents();
     public EarningsFragment() {
     }
 
@@ -54,11 +52,15 @@ public class EarningsFragment extends Fragment {
         btnAdd=view.findViewById(R.id.btnAdd);
         recyclerViewClients=view.findViewById(R.id.rwEarnigs);
 
+        SharedPreferencesHelper sharedPreferencesHelper=new SharedPreferencesHelper(view.getContext());
+        String userName=sharedPreferencesHelper.getPreferences("nameUser");
+
+        ventList=vents.getVentList(view.getContext(),userName);
         btnAdd.setOnClickListener(v -> startActivity(navigation.createIntent(getContext(), NewVentsActivity.class)));
 
 
         recyclerViewClients.setLayoutManager(new LinearLayoutManager(getContext()));
-        EarningsAdapter earningsAdapter =new EarningsAdapter(getContext(),clients,vents);
+        EarningsAdapter earningsAdapter =new EarningsAdapter(getContext(),ventList);
         recyclerViewClients.setAdapter(earningsAdapter);
          return view;
     }

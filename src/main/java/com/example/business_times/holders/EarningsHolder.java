@@ -17,7 +17,6 @@ public class EarningsHolder extends RecyclerView.ViewHolder{
         super(itemView);
         this.imageView=itemView.findViewById(R.id.imgClient);
         this.namePerson=itemView.findViewById(R.id.lblTittleClient);
-        this.date=itemView.findViewById(R.id.date);
         this.money=itemView.findViewById(R.id.numberClients);
     }
 }
