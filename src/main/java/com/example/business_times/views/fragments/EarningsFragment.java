@@ -2,11 +2,14 @@ package com.example.business_times.views.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -59,9 +62,33 @@ public class EarningsFragment extends Fragment {
         btnAdd.setOnClickListener(v -> startActivity(navigation.createIntent(getContext(), NewVentsActivity.class)));
 
 
-        recyclerViewClients.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewClients.setLayoutManager(new LinearLayoutManager(getActivity()));
         EarningsAdapter earningsAdapter =new EarningsAdapter(getContext(),ventList);
         recyclerViewClients.setAdapter(earningsAdapter);
+        recyclerViewClients.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            final GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
+                @Override
+                public boolean onSingleTapUp(MotionEvent e) {
+                    return true;
+                }
+            });
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                View child = rv.findChildViewUnder(e.getX(), e.getY());
+                if (child != null && gestureDetector.onTouchEvent(e)) {
+                    int position = rv.getChildAdapterPosition(child);
+                    SharedPreferencesHelper sharedPreferencesHelper=new SharedPreferencesHelper(view.getContext());
+                    sharedPreferencesHelper.savePreferences("client",ventList.get(position).getNameClient());
+                    earningsAdapter.onItemClicked(position);
+                    return true;
+                }
+                return false;
+            }
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {}
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {}
+        });
          return view;
     }
 }

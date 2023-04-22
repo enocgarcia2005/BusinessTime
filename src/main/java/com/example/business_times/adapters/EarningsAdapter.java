@@ -4,21 +4,26 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.business_times.R;
+import com.example.business_times.config.Navigation;
 import com.example.business_times.entities.Vent;
 import com.example.business_times.holders.EarningsHolder;
+import com.example.business_times.views.activities.VentsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EarningsAdapter extends RecyclerView.Adapter<EarningsHolder> {
+public class EarningsAdapter extends RecyclerView.Adapter<EarningsHolder>{
     Context context;
+
     List<Vent> ventList;
     List<String> earnings;
+    Navigation navigation=new Navigation();
 
     public EarningsAdapter(Context context, List<Vent> ventList){
         this.context=context;
@@ -64,5 +69,8 @@ public class EarningsAdapter extends RecyclerView.Adapter<EarningsHolder> {
             }
         }
         return earningsList;
+    }
+    public void onItemClicked(int position) {
+     context.startActivity(navigation.createIntent(context, VentsActivity.class));
     }
 }

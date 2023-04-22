@@ -19,12 +19,15 @@ import com.example.business_times.config.Navigation;
 import com.example.business_times.controllers.Clients;
 import com.example.business_times.entities.Client;
 
+import java.util.List;
+
 
 public class ClientsActivity extends AppCompatActivity {
     Button btnAdd;
     ImageView btnBack;
     Clients clients=new Clients();
     Client client=new Client();
+    List<Client> clientList;
     RecyclerView rwClients;
     TextView lblTotalClients;
     Navigation navigation=new Navigation();
@@ -42,6 +45,9 @@ public class ClientsActivity extends AppCompatActivity {
         String nameUser=preferences.getString("nameUser","");
 
         updateRecyclerView(nameUser);
+        clientList=clients.getClientList(getApplicationContext(),nameUser);
+        String totalClient=clientList.size()+"";
+        lblTotalClients.setText(totalClient);
 
         btnAdd.setOnClickListener(v->{
             final Dialog dialog=new Dialog(ClientsActivity.this);
@@ -60,6 +66,9 @@ public class ClientsActivity extends AppCompatActivity {
 
                 clients.save(client,getApplicationContext(),nameUser);
                 updateRecyclerView(nameUser);
+                clientList=clients.getClientList(getApplicationContext(),nameUser);
+                String totalClient2=clientList.size()+"";
+                lblTotalClients.setText(totalClient2);
                 dialog.cancel();
             });
             btnCancel.setOnClickListener(v2->dialog.cancel());

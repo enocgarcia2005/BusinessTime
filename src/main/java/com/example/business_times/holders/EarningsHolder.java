@@ -12,7 +12,7 @@ import com.example.business_times.R;
 
 public class EarningsHolder extends RecyclerView.ViewHolder{
     public ImageView imageView;
-    public TextView namePerson,date,money;
+    public TextView namePerson,money;
     public EarningsHolder(@NonNull View itemView) {
         super(itemView);
         this.imageView=itemView.findViewById(R.id.imgClient);

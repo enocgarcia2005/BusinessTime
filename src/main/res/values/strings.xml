@@ -42,4 +42,6 @@
     <string name="name_client">Introduzca el nombre</string>
     <string name="lastname_client">Introduzca el apellido</string>
     <string name="cancel">Cancelar</string>
+    <string name="resume">Resumen</string>
+    <string name="btn_add_payment">Agregar abono</string>
 </resources>

@@ -23,6 +23,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class NewVentsActivity extends AppCompatActivity {
     Button btnNew;
@@ -64,7 +65,10 @@ public class NewVentsActivity extends AppCompatActivity {
         spClients.setAdapter(arrayAdapter);
 
         btnNew.setOnClickListener(v->{
-            String dateTime = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm:ss a")
+            if(spClients.getSelectedItem().toString().equals("Seleccione un Cliente")){
+                Toast.makeText(this, "Seleccione un cliente", Toast.LENGTH_SHORT).show();
+            }else{
+            String dateTime = DateTimeFormatter.ofPattern("dd de MMMM de yyyy",new Locale("es_Es"))
                     .format(LocalDateTime.now());
             vent.setDate(dateTime);
             vent.setDetails(txtDetails.getText().toString());
@@ -77,7 +81,7 @@ public class NewVentsActivity extends AppCompatActivity {
             txtPrice.setText("");
             txtDetails.setText("");
             spClients.setSelection(0);
-            Toast.makeText(this, "Venta agregada correctamente", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Venta agregada correctamente", Toast.LENGTH_SHORT).show();}
         });
         btnBack.setOnClickListener(v -> startActivity(navigation.createIntent(getApplicationContext(), HomeActivity.class)));
     }
