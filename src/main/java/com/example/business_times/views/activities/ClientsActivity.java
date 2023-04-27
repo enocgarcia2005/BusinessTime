@@ -17,6 +17,7 @@ import com.example.business_times.R;
 import com.example.business_times.adapters.ClientsAdapter;
 import com.example.business_times.config.Navigation;
 import com.example.business_times.controllers.Clients;
+import com.example.business_times.controllers.Vents;
 import com.example.business_times.entities.Client;
 
 import java.util.List;
@@ -32,6 +33,7 @@ public class ClientsActivity extends AppCompatActivity {
     TextView lblTotalClients;
     Navigation navigation=new Navigation();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +46,6 @@ public class ClientsActivity extends AppCompatActivity {
         SharedPreferences preferences=getSharedPreferences("User",Context.MODE_PRIVATE);
         String nameUser=preferences.getString("nameUser","");
 
-        updateRecyclerView(nameUser);
         clientList=clients.getClientList(getApplicationContext(),nameUser);
         String totalClient=clientList.size()+"";
         lblTotalClients.setText(totalClient);
@@ -75,10 +76,12 @@ public class ClientsActivity extends AppCompatActivity {
             dialog.show();
         });
         btnBack.setOnClickListener(v -> startActivity(navigation.createIntent(getApplicationContext(), HomeActivity.class)));
+        updateRecyclerView(nameUser);
+
     }
     public void updateRecyclerView(String userName){
         rwClients.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        ClientsAdapter clientsAdapter =new ClientsAdapter(getApplicationContext(),clients.getClientList(getApplicationContext(),userName));
+        ClientsAdapter clientsAdapter =new ClientsAdapter(ClientsActivity.this,clients.getClientList(getApplicationContext(),userName));
         rwClients.setAdapter(clientsAdapter);
     }
 

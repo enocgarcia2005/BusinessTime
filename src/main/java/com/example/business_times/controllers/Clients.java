@@ -29,6 +29,14 @@ public class Clients {
         AdminDataBase adminDataBase=getConecction(context);
         return adminDataBase.userDao().getAllCLients(userName);
     }
+    public void updateClient(Context context,Client client){
+        adminDataBase=getConecction(context);
+        adminDataBase.userDao().updateClient(client);
+    }
+    public void deleteClient(Context context,Client client){
+        adminDataBase=getConecction(context);
+        adminDataBase.userDao().deleteClient(client);
+    }
     private boolean clientExist(Client client,List<Client> clientList){
         if (clientList!=null){
             for (Client clientAux:clientList){

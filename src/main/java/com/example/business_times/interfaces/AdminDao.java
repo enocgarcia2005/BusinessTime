@@ -34,6 +34,8 @@ public interface AdminDao {
     @Delete
     void deleteVent(Vent vent);
     @Delete
+    void deleteVentList(List<Vent> ventList);
+    @Delete
     void deleteClient(Client client);
 
     /**
