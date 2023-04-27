@@ -24,8 +24,6 @@ public class VentsAdapter extends RecyclerView.Adapter<VentsHolder>{
         this.context=context;
         this.ventList=ventList;
         sharedPreferencesHelper=new SharedPreferencesHelper(context);
-        ventList.removeIf(vent -> !vent.getNameClient().equals(sharedPreferencesHelper.getPreferences("client")));
-
     }
     @NonNull
     @Override

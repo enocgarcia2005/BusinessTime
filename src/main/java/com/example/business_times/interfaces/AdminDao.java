@@ -3,10 +3,13 @@ package com.example.business_times.interfaces;
 
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.business_times.entities.Client;
+import com.example.business_times.entities.Payment;
 import com.example.business_times.entities.User;
 import com.example.business_times.entities.Vent;
 
@@ -19,7 +22,6 @@ public interface AdminDao {
     /**
      * insert user in data base
      * @param user-user write for the user
-     * @return return 1 if is all ok.
      */
     @Insert
     void insert(User user);
@@ -27,6 +29,12 @@ public interface AdminDao {
     void insert(Client client);
     @Insert
     void insert(Vent vent);
+    @Insert
+    void insert(Payment payment);
+    @Delete
+    void deleteVent(Vent vent);
+    @Delete
+    void deleteClient(Client client);
 
     /**
      * list all users of data base .
@@ -40,4 +48,13 @@ public interface AdminDao {
 
     @Query("SELECT * FROM "+Vent.TABLE_PRODUCTS+" WHERE nameUser= :userName")
     List<Vent> getAllVents(String userName);
+
+    @Query("SELECT * FROM "+Payment.TABLE_PAYMENTS+" WHERE userName=:userName")
+    List<Payment> getAllPayments(String userName);
+   @Update
+    void updateVent(Vent vent);
+   @Update
+    void updateVents(List<Vent> ventList);
+   @Update
+    void  updateClient(Client client);
 }

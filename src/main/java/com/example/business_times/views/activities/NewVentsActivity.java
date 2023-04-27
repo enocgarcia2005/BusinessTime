@@ -68,7 +68,7 @@ public class NewVentsActivity extends AppCompatActivity {
             if(spClients.getSelectedItem().toString().equals("Seleccione un Cliente")){
                 Toast.makeText(this, "Seleccione un cliente", Toast.LENGTH_SHORT).show();
             }else{
-            String dateTime = DateTimeFormatter.ofPattern("dd de MMMM de yyyy",new Locale("es_Es"))
+            String dateTime = DateTimeFormatter.ofPattern("dd MMMM yyyy",new Locale("es_Es"))
                     .format(LocalDateTime.now());
             vent.setDate(dateTime);
             vent.setDetails(txtDetails.getText().toString());
@@ -76,7 +76,7 @@ public class NewVentsActivity extends AppCompatActivity {
             vent.setNameClient(spClients.getSelectedItem().toString());
             vent.setNameUser(nameUser);
 
-            vents.save(vent,getApplicationContext(),nameUser);
+            vents.save(vent,getApplicationContext());
 
             txtPrice.setText("");
             txtDetails.setText("");

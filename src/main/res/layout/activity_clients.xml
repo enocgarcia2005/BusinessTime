@@ -117,10 +117,10 @@
         android:id="@+id/rwClients"
         android:layout_width="409dp"
         android:layout_height="450dp"
-        android:layout_marginBottom="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvTotalClients" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnAddClient"

@@ -15,7 +15,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="380dp"
         android:layout_height="80dp"
-        android:animateLayoutChanges="true">
+        android:animateLayoutChanges="true"
+        android:background="@color/background">
 
         <TextView
             android:id="@+id/lblDetailsVent"

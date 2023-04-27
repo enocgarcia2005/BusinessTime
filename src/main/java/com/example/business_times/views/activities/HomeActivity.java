@@ -3,7 +3,9 @@ package com.example.business_times.views.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -117,7 +119,16 @@ public class HomeActivity extends AppCompatActivity {
      * This method is empty to disabled the event of the button back the device and only use the btnBack created for the developer.
      */
     @Override
-    public void onBackPressed() {}
+    public void onBackPressed() {
+        AlertDialog.Builder builder=new AlertDialog.Builder(getApplicationContext());
+        builder.setMessage("Quieres cerrar sesión?").setPositiveButton("Si", (dialog, which) -> {
+            Intent intent=new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }).setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss());
+        builder.show();
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();

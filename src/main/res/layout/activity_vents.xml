@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.activities.VentsActivity">
+
     <TextView
         android:id="@+id/header"
         android:layout_width="550dp"
@@ -16,18 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="VisualLintBounds" />
-    <ImageView
-        android:id="@+id/btnBackH"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/button_white"
-        android:src="@drawable/baseline_arrow_back_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ImageContrastCheck"
-        android:contentDescription="@string/image_background" />
 
     <TextView
         android:id="@+id/tittleActivityVent"
@@ -41,15 +30,78 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/btnBackVent"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_white"
+        android:src="@drawable/baseline_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck"
+        android:contentDescription="@string/image_background" />
+
+    <TextView
+        android:id="@+id/containerVents"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/cardview_earnings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tittleTotalVents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/acme"
+        android:text="@string/tittle_earnings"
+        android:textColor="@color/circleColor"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/containerVents"
+        app:layout_constraintStart_toStartOf="@+id/containerVents"
+        app:layout_constraintTop_toTopOf="@+id/containerVents"
+        tools:ignore="TextContrastCheck" />
+    <TextView
+        android:id="@+id/lblMoneyVents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/acme"
+        android:text="@string/default_money"
+        android:textColor="@color/circleColor"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/containerVents"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="@+id/containerVents"
+        app:layout_constraintTop_toBottomOf="@+id/tittleTotalVents"
+        tools:ignore="TextContrastCheck" />
+    <TextView
+        android:id="@+id/lblNumberTransaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/acme"
+        android:text="@string/default_clients"
+        android:textColor="@color/circleColor"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/containerVents"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="@+id/containerVents"
+        app:layout_constraintTop_toBottomOf="@+id/lblMoneyVents"
+        tools:ignore="TextContrastCheck" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rwVents"
         android:layout_width="409dp"
         android:layout_height="500dp"
-        android:layout_marginBottom="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnAddPayment"

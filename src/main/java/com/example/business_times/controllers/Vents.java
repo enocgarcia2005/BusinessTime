@@ -13,9 +13,8 @@ import java.util.List;
 public class Vents {
     List<Vent> clientVent;
     AdminDataBase adminDataBase;
-    public void save(Vent vent, Context context,String userName){
+    public void save(Vent vent, Context context){
         adminDataBase =getConecction(context);
-        clientVent= getVentList(context,userName);
         adminDataBase.userDao().insert(vent);
     }
 
@@ -24,6 +23,14 @@ public class Vents {
         return adminDataBase.userDao().getAllVents(userName);
     }
 
+    public void deleteVents(Context context,Vent vent){
+        adminDataBase=getConecction(context);
+        adminDataBase.userDao().deleteVent(vent);
+    }
+    public void updateVents(Context context,Vent vent){
+        adminDataBase=getConecction(context);
+        adminDataBase.userDao().updateVent(vent);
+    }
     private AdminDataBase getConecction(Context context){
         return Room.databaseBuilder(context, AdminDataBase.class, Constant.BD_NAME).allowMainThreadQueries().build();
     }

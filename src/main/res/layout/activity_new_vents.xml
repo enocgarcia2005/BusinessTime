@@ -54,7 +54,7 @@
         android:fontFamily="@font/acme"
         android:hint="@string/hint_price"
         android:importantForAutofill="no"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

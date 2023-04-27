@@ -32,7 +32,7 @@
     <string name="providers">Proveedores</string>
     <string name="settings_account">Ajustes de la cuenta</string>
     <string name="hint_price">Introduzca el precio</string>
-    <string name="hint_details">Introduzca detalles de venta</string>
+    <string name="hint_details">Introduzca detalles </string>
     <string name="note">Nota: los campos con * son obligatorios</string>
     <string name="text_required">*</string>
     <string name="selec_client">Seleccione un cliente</string>
@@ -44,4 +44,6 @@
     <string name="cancel">Cancelar</string>
     <string name="resume">Resumen</string>
     <string name="btn_add_payment">Agregar abono</string>
+    <string name="leave">Cerrar Sesión</string>
+    <string name="payment_tittle">Historial de abonos</string>
 </resources>

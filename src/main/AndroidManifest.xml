@@ -12,6 +12,12 @@
         android:theme="@style/Theme.Business_Times"
         tools:targetApi="31">
         <activity
+            android:name=".views.activities.UpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.activities.PaymentsActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.activities.VentsActivity"
             android:exported="false" />
         <activity
