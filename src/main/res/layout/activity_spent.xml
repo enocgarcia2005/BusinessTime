@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.activities.VentsActivity">
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="550dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="-300dp"
+        android:background="@drawable/header_backgroud"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="VisualLintBounds" />
+
+    <TextView
+        android:id="@+id/tittleActivityVent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/black_han_sans"
+        android:text="@string/resume"
+        android:textColor="@color/text"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/btnBackSpent"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_white"
+        android:src="@drawable/baseline_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck"
+        android:contentDescription="@string/image_background" />
+
+    <TextView
+        android:id="@+id/containerSpents"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/cardview_expenses"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tittleTotalSpents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/acme"
+        android:text="@string/tittle_expenses"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/containerSpents"
+        app:layout_constraintStart_toStartOf="@+id/containerSpents"
+        app:layout_constraintTop_toTopOf="@+id/containerSpents"
+        tools:ignore="TextContrastCheck" />
+    <TextView
+        android:id="@+id/lblMoneySpents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/acme"
+        android:text="@string/default_money"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/containerSpents"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="@+id/containerSpents"
+        app:layout_constraintTop_toBottomOf="@+id/tittleTotalSpents"
+        tools:ignore="TextContrastCheck" />
+    <TextView
+        android:id="@+id/lblNumberTransactionSpent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/acme"
+        android:text="@string/default_clients"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/containerSpents"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="@+id/containerSpents"
+        app:layout_constraintTop_toBottomOf="@+id/lblMoneySpents"
+        tools:ignore="TextContrastCheck" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rwSpent"
+        android:layout_width="409dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAddPaymentS"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="11dp"
+        android:background="@drawable/button_rounded"
+        android:fontFamily="@font/delius_unicase"
+        android:text="@string/btn_add_payment"
+        android:textColor="@color/text"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

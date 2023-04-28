@@ -19,7 +19,7 @@
         tools:ignore="VisualLintBounds" />
 
     <ImageView
-        android:id="@+id/btnBack"
+        android:id="@+id/btnBackEx"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginStart="10dp"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txtPriceV"
+        android:id="@+id/txtPriceE"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="75dp"
@@ -60,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imgBackground" />
 
     <EditText
-        android:id="@+id/txtDetails"
+        android:id="@+id/txtDetailsE"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -71,22 +71,22 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPriceV"
+        app:layout_constraintTop_toBottomOf="@+id/txtPriceE"
         android:importantForAutofill="no" />
 
     <Spinner
-        android:id="@+id/spClients"
+        android:id="@+id/spProvide"
         android:layout_width="250dp"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDetails"
+        app:layout_constraintTop_toBottomOf="@+id/txtDetailsE"
         />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnNew"
+        android:id="@+id/btnNewE"
         android:layout_width="250dp"
         android:layout_height="60dp"
         android:layout_marginBottom="100dp"

@@ -13,7 +13,9 @@ import android.widget.TextView;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.business_times.R;
 import com.example.business_times.config.SharedPreferencesHelper;
+import com.example.business_times.controllers.Spents;
 import com.example.business_times.controllers.Vents;
+import com.example.business_times.entities.Spent;
 import com.example.business_times.entities.Vent;
 import com.example.business_times.views.fragments.ConfigFragment;
 import com.example.business_times.views.fragments.EarningsFragment;
@@ -37,9 +39,14 @@ public class HomeActivity extends AppCompatActivity {
     private final int ID_ACCOUNT=3;
     TextView lblMoney;
     TextView lblClients;
+    TextView lblExpense;
+    TextView lblProvide;
     Vents vents=new Vents();
     List<String> clientList=new ArrayList<>();
     List<Vent> ventList;
+    Spents spents=new Spents();
+    List<String> provideList=new ArrayList<>();
+    List<Spent> spentList;
     /**
      * This object is created to save the fragment depending the button clicked in the button tab navigator.
      */
@@ -62,6 +69,8 @@ public class HomeActivity extends AppCompatActivity {
         MeowBottomNavigation meowBottomNavigation=findViewById(R.id.bottomNavigation);
         lblMoney=findViewById(R.id.lblMoneyEarning);
         lblClients=findViewById(R.id.lblNumberClients);
+        lblExpense=findViewById(R.id.lblMoneyExpense);
+        lblProvide=findViewById(R.id.lblNumberProviders);
 
         ventList=vents.getVentList(getApplicationContext(),sharedPreferencesHelper.getPreferences("nameUser"));
 
@@ -77,6 +86,21 @@ public class HomeActivity extends AppCompatActivity {
 
         lblMoney.setText(totalMoney);
         lblClients.setText(totalClient);
+
+        spentList=spents.getSpentList(getApplicationContext(),sharedPreferencesHelper.getPreferences("nameUser"));
+
+        double moneyE=0;
+        for (Spent spent:spentList){
+            moneyE+= spent.getPrice();
+            if(!provideList.contains(spent.getNameProvide())){
+                provideList.add(spent.getNameProvide());
+            }
+        }
+        String totalMoneyE=moneyE+"$";
+        String totalClientE=provideList.size()+" Proveedores";
+
+        lblExpense.setText(totalMoneyE);
+        lblProvide.setText(totalClientE);
 
         meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_EARNINGS,R.drawable.baseline_attach_money_24));
         meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_EXPENSES,R.drawable.baseline_money_off_24));

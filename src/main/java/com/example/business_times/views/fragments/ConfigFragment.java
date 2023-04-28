@@ -17,10 +17,12 @@ import com.example.business_times.config.Navigation;
 import com.example.business_times.views.activities.ClientsActivity;
 import com.example.business_times.views.activities.MainActivity;
 import com.example.business_times.views.activities.PaymentsActivity;
+import com.example.business_times.views.activities.ProvideActivity;
 
 public class ConfigFragment extends Fragment {
     CardView btnClients;
     CardView btnLogOut;
+    CardView btnProvide;
     Navigation navigation=new Navigation();
     CardView btnPayments;
     @Override
@@ -30,6 +32,7 @@ public class ConfigFragment extends Fragment {
         btnClients=view.findViewById(R.id.cardViewClients);
         btnLogOut=view.findViewById(R.id.cardViewLeave);
         btnPayments=view.findViewById(R.id.cardViewPayments);
+        btnProvide=view.findViewById(R.id.cardViewProviders);
 
         btnClients.setOnClickListener(v->startActivity(navigation.createIntent(getContext(), ClientsActivity.class)));
 
@@ -46,7 +49,7 @@ public class ConfigFragment extends Fragment {
         });
 
         btnPayments.setOnClickListener(v->startActivity(navigation.createIntent(view.getContext(), PaymentsActivity.class)));
-
+        btnProvide.setOnClickListener(v->startActivity(navigation.createIntent(view.getContext(), ProvideActivity.class)));
         return view;
     }
 }

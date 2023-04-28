@@ -7,46 +7,15 @@
     android:background="@color/background"
     tools:context=".views.fragments.EarningsFragment">
 
-    <EditText
-        android:id="@+id/txtSearch"
-        android:layout_width="340dp"
-        android:layout_height="45dp"
-        android:background="@drawable/card_view"
-        android:hint="@string/hint_search"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:paddingStart="15dp"
-        android:paddingTop="3dp"
-        android:textAlignment="viewStart"
-        android:textColor="@color/text"
-        android:textColorHint="@color/text"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="RtlSymmetry" />
-
-    <ImageView
-        android:id="@+id/imgSearchIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:contentDescription="@string/image_background"
-        android:src="@android:drawable/ic_menu_search"
-        app:layout_constraintBottom_toBottomOf="@+id/txtSearch"
-        app:layout_constraintEnd_toEndOf="@+id/txtSearch"
-        app:layout_constraintTop_toTopOf="@+id/txtSearch" />
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rwEarnigs"
+        android:id="@+id/rwExpenses"
         android:layout_width="409dp"
         android:layout_height="330dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSearch"
-        android:background="@color/background"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnAddE"

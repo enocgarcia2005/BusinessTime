@@ -13,21 +13,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.business_times.R;
-import com.example.business_times.adapters.VentsAdapter;
+import com.example.business_times.adapters.SpentAdapter;
 import com.example.business_times.config.Navigation;
 import com.example.business_times.config.SharedPreferencesHelper;
 import com.example.business_times.controllers.Payments;
-import com.example.business_times.controllers.Vents;
+import com.example.business_times.controllers.Spents;
 import com.example.business_times.entities.Payment;
-import com.example.business_times.entities.Vent;
+import com.example.business_times.entities.Spent;
 
 import java.util.Iterator;
 import java.util.List;
 
-public class VentsActivity extends AppCompatActivity {
+public class SpentActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    List<Vent> ventList;
-    Vents vents=new Vents();
+    List<Spent> spentList;
+    Spents spents=new Spents();
     Button btnPayment;
     ImageView btnBack;
     Navigation navigation=new Navigation();
@@ -36,28 +36,27 @@ public class VentsActivity extends AppCompatActivity {
     TextView name;
     Payment payment=new Payment();
     Payments payments=new Payments();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vents);
-        recyclerView=findViewById(R.id.rwVents);
-        btnPayment=findViewById(R.id.btnAddPayment);
-        btnBack=findViewById(R.id.btnBackVent);
-        lblMoney=findViewById(R.id.lblMoneyVents);
-        lblTotalVents=findViewById(R.id.lblNumberTransaction);
-        name=findViewById(R.id.tittleTotalVents);
+        setContentView(R.layout.activity_spent);
+        recyclerView=findViewById(R.id.rwSpent);
+        btnPayment=findViewById(R.id.btnAddPaymentS);
+        btnBack=findViewById(R.id.btnBackSpent);
+        lblMoney=findViewById(R.id.lblMoneySpents);
+        lblTotalVents=findViewById(R.id.lblNumberTransactionSpent);
+        name=findViewById(R.id.tittleTotalSpents);
         SharedPreferencesHelper sharedPreferencesHelper=new SharedPreferencesHelper(getApplicationContext());
 
-        ventList=vents.getVentList(getApplicationContext(),sharedPreferencesHelper.getPreferences("nameUser"));
-        ventList.removeIf(vent -> !vent.getNameClient().equals(sharedPreferencesHelper.getPreferences("client")));
+        spentList=spents.getSpentList(getApplicationContext(),sharedPreferencesHelper.getPreferences("nameUser"));
+        spentList.removeIf(spent -> !spent.getNameProvide().equals(sharedPreferencesHelper.getPreferences("provide")));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        VentsAdapter ventsAdapter=new VentsAdapter(VentsActivity.this,ventList);
-        recyclerView.setAdapter(ventsAdapter);
+        SpentAdapter spentAdapter=new SpentAdapter(SpentActivity.this,spentList);
+        recyclerView.setAdapter(spentAdapter);
         updateInfo();
 
         btnPayment.setOnClickListener(v -> {
-            final Dialog dialog=new Dialog(VentsActivity.this);
+            final Dialog dialog=new Dialog(SpentActivity.this);
             dialog.setContentView(R.layout.add_payment);
             dialog.setCancelable(false);
 
@@ -70,11 +69,11 @@ public class VentsActivity extends AppCompatActivity {
             btnAddPayment.setOnClickListener(v1->{
                 double totalPayment=Double.parseDouble(txtPrice.getText().toString());
                 operationPayment(totalPayment);
-                recyclerView.setAdapter(ventsAdapter);
+                recyclerView.setAdapter(spentAdapter);
                 updateInfo();
                 payment.setDetails(txtDetails.getText().toString());
                 payment.setPrice(Double.parseDouble(txtPrice.getText().toString()));
-                payment.setCategory("earnings");
+                payment.setCategory("expense");
                 payment.setUserName(sharedPreferencesHelper.getPreferences("nameUser"));
                 payments.save(getApplicationContext(),payment);
                 dialog.cancel();
@@ -88,16 +87,16 @@ public class VentsActivity extends AppCompatActivity {
     }
     public void operationPayment(double payment){
         double paymentCopy = payment;
-        Iterator<Vent> iterator = ventList.iterator();
+        Iterator<Spent> iterator = spentList.iterator();
         while (iterator.hasNext()) {
-            Vent vent = iterator.next();
-            if (paymentCopy >= vent.getPrice()) {
-                paymentCopy = paymentCopy - vent.getPrice();
-                vents.deleteVents(getApplicationContext(),vent);
+            Spent spent = iterator.next();
+            if (paymentCopy >= spent.getPrice()) {
+                paymentCopy = paymentCopy - spent.getPrice();
+                spents.deleteSpent(getApplicationContext(),spent);
                 iterator.remove();
             } else {
-                vent.setPrice(vent.getPrice() - paymentCopy);
-                vents.updateVents(getApplicationContext(),vent);
+                spent.setPrice(spent.getPrice() - paymentCopy);
+                spents.updateSpent(getApplicationContext(),spent);
                 paymentCopy = 0;
             }
             if (paymentCopy == 0) {
@@ -108,14 +107,14 @@ public class VentsActivity extends AppCompatActivity {
     }
     public void updateInfo(){
         double money=0;
-        for (Vent vent:ventList){
-            money+= vent.getPrice();
+        for (Spent spent:spentList){
+            money+= spent.getPrice();
         }
         String totalMoney=money+"$";
-        String totalClient=ventList.size()+" Transacciones";
+        String totalClient=spentList.size()+" Transacciones";
 
         lblMoney.setText(totalMoney);
         lblTotalVents.setText(totalClient);
-        name.setText(ventList.get(0).getNameClient());
+        name.setText(spentList.get(0).getNameProvide());
     }
 }

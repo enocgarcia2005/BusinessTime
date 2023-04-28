@@ -15,13 +15,16 @@ public class Spent {
     @ColumnInfo(index = true,name = COLUMN_ID_SPENT)
     private long id;
     @ColumnInfo(name = "name")
-    private String name;
+    private String date;
     @ColumnInfo(name = "details")
     private String details;
     @ColumnInfo(name = "price")
     private double price;
     @ColumnInfo(name = "nameProvide")
     private String nameProvide;
+
+    @ColumnInfo(name = "nameUser")
+    private String nameUser;
 
     public double getPrice() {
         return price;
@@ -39,12 +42,12 @@ public class Spent {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDate() {
+        return date;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getDetails() {
@@ -60,4 +63,12 @@ public class Spent {
     }
 
     public void setNameProvide(String nameProvide) {this.nameProvide = nameProvide;}
+    public String getNameUser() {
+        return nameUser;
+    }
+
+    public void setNameUser(String nameUser) {
+        this.nameUser = nameUser;
+    }
+
 }

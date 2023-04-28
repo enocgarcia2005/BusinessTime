@@ -13,12 +13,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.business_times.R;
+import com.example.business_times.config.Navigation;
 import com.example.business_times.config.SharedPreferencesHelper;
 import com.example.business_times.controllers.Clients;
 import com.example.business_times.controllers.Vents;
 import com.example.business_times.entities.Client;
 import com.example.business_times.entities.Vent;
 import com.example.business_times.holders.ClientsHolder;
+import com.example.business_times.views.activities.HomeActivity;
 
 import java.util.List;
 
@@ -28,7 +30,7 @@ public class ClientsAdapter extends RecyclerView.Adapter<ClientsHolder>{
     List<Vent> ventList;
     Clients clients=new Clients();
     Vents vents=new Vents();
-
+Navigation navigation=new Navigation();
 
 
     public ClientsAdapter(Context context,List<Client> clients){
@@ -80,6 +82,8 @@ public class ClientsAdapter extends RecyclerView.Adapter<ClientsHolder>{
                     clients.updateClient(context,client);
                     this.notifyItemChanged(position);
                     dialog.cancel();
+                    context.startActivity(navigation.createIntent(context, HomeActivity.class));
+
                 });
 
                 btnCancel.setOnClickListener(v2->dialog.cancel());
@@ -92,7 +96,8 @@ public class ClientsAdapter extends RecyclerView.Adapter<ClientsHolder>{
                         +" "+clientList.get(position).getLastName()));
                 vents.deleteVentList(context,ventList);
                 Toast.makeText(context, "Eliminado correctamente", Toast.LENGTH_SHORT).show();
-                 return true;
+                context.startActivity(navigation.createIntent(context, HomeActivity.class));
+                return true;
             });
         });
     }

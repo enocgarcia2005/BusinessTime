@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.business_times.R;
 
-public class VentsHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener{
+public class SpentsHolders extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener{
     public TextView ventName,date,money;
     View.OnCreateContextMenuListener contextClick;
-    public VentsHolder(@NonNull View itemView) {
+    public SpentsHolders(@NonNull View itemView) {
         super(itemView);
         ventName=itemView.findViewById(R.id.lblDetailsVent);
         date=itemView.findViewById(R.id.lblDateVent);

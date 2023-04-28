@@ -22,7 +22,7 @@ public class Vent {
     private double price;
     @ColumnInfo(name = "nameClient")
     private String nameClient;
-    @ColumnInfo
+    @ColumnInfo(name = "nameUser")
     private String nameUser;
 
     public String getNameUser() {

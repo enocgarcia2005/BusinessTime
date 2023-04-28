@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cvTotalClients"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="400dp"
+    android:layout_height="105dp"
     android:animateLayoutChanges="true"
     app:cardBackgroundColor="@color/background"
     app:cardCornerRadius="20dp"
-    app:cardElevation="8dp"
+    app:cardElevation="4dp"
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="380dp"
         android:layout_height="80dp"
-        android:animateLayoutChanges="true"
-        android:orientation="vertical">
+        android:animateLayoutChanges="true">
 
         <ImageView
-            android:id="@+id/imgProvide"
+            android:id="@+id/imageProvide"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_alignParentStart="true"
@@ -37,31 +35,17 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/lblTittleProvide"
+            android:id="@+id/lblProvideName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:fontFamily="@font/acme"
-            android:text="@string/name"
+            android:text="@string/providers"
             android:textColor="@color/text"
-            android:textSize="22sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imgProvide"
+            app:layout_constraintStart_toEndOf="@+id/imageProvide"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/numberProvider"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
-            android:fontFamily="@font/acme"
-            android:text="@string/name"
-            android:textColor="@color/red"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.cardview.widget.CardView>
+
